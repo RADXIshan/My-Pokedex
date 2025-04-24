@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pokedex</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <nav class="pokedex-navbar">
+        <a href="index.html" class="active">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="pokedex.html">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Pokédex</span>
+        </a>
+        <a href="compare.html">
+            <span class="nav-icon">></span>
+            <span class="nav-label">Compare</span>
+        </a>
+        <a href="about.html">
+            <span class="nav-icon">ℹ️</span>
+            <span class="nav-label">About</span>
+        </a>
+    </nav>
+    <div class="container">
+        <h1>My Pokedex</h1>
+        <div class="inner-container">
+            <p class="overview">Welcome to my Pokedex!</p>
+            <h2 class="Search">Search for a Pokemon</h2>
+            <form id="pokemon-form">
+                <input type="text" name="pokemonName" id="pokemonNameInput" placeholder="Enter Pokemon Name" autocomplete="off" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="suggestions" class="suggestions-list"></div>
+            <div id="pokemon-carousel" class="pokemon-carousel">
+                <!-- Carousel items will be injected here by JS -->
+            </div>
+        </div>
+    </div>
+    <div id="pokemon-container" class="hidden">
+        <div id="pokemonImg">
+            <img id="pokemonImage" src="" alt="Pokemon Image">
+        </div>
+        <h2 id="pokemonName"></h2>
+        <p id="pokemonTypes"></p>
+        <p id="pokemonHeight"></p>
+        <p id="pokemonWeight"></p>
+        <p id="pokemonAbilities"></p>
+        <p id="errorMsg" style="color:red;"></p>
+    </div>
+    <script src="./script.js"></script>
+</body> 
+</html>
