@@ -307,47 +307,6 @@ function hideLoadingAnimation() {
     }
 }
 
-// Modify the form submission event to show loading animation
-document.getElementById("pokemon-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const pokemonName = formData.get('pokemonName');
-    if (!pokemonName) return;
-    
-    // Show loading animation
-    showLoadingAnimation();
-    
-    fetch("/pokemon", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ pokemonName })
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Prepare the Pokemon data but don't show it yet
-        prepareShowPokemon(data);
-        
-        // First hide the loading animation
-        hideLoadingAnimation();
-        
-        // Wait for the loading animation to fully disappear (1 second)
-        setTimeout(() => {
-            // Then show the Pokemon card
-            const container = document.getElementById("pokemon-container");
-            container.classList.remove("hidden");
-            container.classList.add("visible");
-        }, 1000); // 1 second delay before showing Pokemon
-    })
-    .catch(() => {
-        hideLoadingAnimation();
-        setTimeout(() => {
-            showPokemon({ error: "Failed to fetch Pokémon data" });
-        }, 1000);
-    });
-});
-
 // New function to prepare the Pokemon data without showing it yet
 function prepareShowPokemon(data) {
     const container = document.getElementById("pokemon-container");
