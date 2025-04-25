@@ -30,7 +30,7 @@
         <div class="inner-container">
             <p class="overview">Welcome to my Pokedex!</p>
             <h2 class="Search">Search for a Pokemon</h2>
-            <form id="pokemon-form">
+            <form id="pokemon-form" action="/pokemon" method="POST">
                 <input type="text" name="pokemonName" id="pokemonNameInput" placeholder="Enter Pokemon Name" autocomplete="off" required>
                 <button type="submit">Search</button>
             </form>
