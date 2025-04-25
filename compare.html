@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Pokémon</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./compare.css">
+</head>
+<body>
+    <nav class="pokedex-navbar">
+        <a href="./index.html">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="pokedex.html">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Pokédex</span>
+        </a>
+        <a href="./compare.html" class="active">
+            <span class="nav-icon">></span>
+            <span class="nav-label">Compare</span>
+        </a>
+        <a href="./about.html">
+            <span class="nav-icon">ℹ️</span>
+            <span class="nav-label">About</span>
+        </a>
+    </nav>
+    
+    <div class="comparison-header">
+        <h1 style="margin-top: 10px;">Compare Pokémon</h1>
+        <div class="compare-container">
+            <div class="pokemon-selector">
+                <div class="pokemon-select-box">
+                    <h3>First Pokémon</h3>
+                    <input type="text" id="pokemon1" placeholder="Enter first Pokémon name" autocomplete="off">
+                    <div id="suggestions1" class="suggestions-list"></div>
+                </div>
+                
+                <div class="pokemon-select-box">
+                    <h3>Second Pokémon</h3>
+                    <input type="text" id="pokemon2" placeholder="Enter second Pokémon name" autocomplete="off">
+                    <div id="suggestions2" class="suggestions-list"></div>
+                </div>
+            </div>
+            
+            <button id="compare-btn" class="compare-button">Compare!</button>
+        </div>
+        <div id="pokemon-carousel-compare" class="pokemon-carousel-compare">
+            <!-- Carousel items will be injected here by JS -->
+        </div>
+        <div id="comparison-results" class="comparison-results hidden">
+            <div class="pokemon-cards">
+                <div id="pokemon-card-1" class="pokemon-compare-card">
+                    <!-- First Pokemon data will be inserted here -->
+                </div>
+                
+                <div class="center-winner-area">
+                    <div class="vs-circle">VS</div>
+                    <div id="center-winner"></div>
+                </div>
+                
+                <div id="pokemon-card-2" class="pokemon-compare-card">
+                    <!-- Second Pokemon data will be inserted here -->
+                </div>
+            </div>
+            
+            <div id="winner-container" class="winner-container hidden">
+                <h3>Winner</h3>
+                <div id="winner-card" class="winner-card">
+                    <!-- Winner Pokemon will be displayed here -->
+                </div>
+                <p id="winner-reason"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="loading-container" class="loading-container hidden">
+        <div class="pokeball-loading"></div>
+    </div>
+    
+    <footer class="copyright-footer">
+        <p><span class="pokeball-icon"></span> © Ishan Roy <script>document.write(new Date().getFullYear())</script> <span class="pokeball-icon"></span></p>
+    </footer>
+    
+    <script src="./compare.js"></script>
+</body>
+</html>

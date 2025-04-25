@@ -260,3 +260,130 @@ startCarousel();
 document.getElementById('pokemon-form').addEventListener('submit', function(e) {
     stopCarousel();
 });
+// Add this function to create and show the loading animation
+function showLoadingAnimation() {
+    // Hide the pokemon container if it's visible
+    const pokemonContainer = document.getElementById("pokemon-container");
+    pokemonContainer.classList.remove("visible");
+    pokemonContainer.classList.add("hidden");
+    
+    // Create loading container if it doesn't exist
+    let loadingContainer = document.getElementById("loading-container");
+    if (!loadingContainer) {
+        loadingContainer = document.createElement("div");
+        loadingContainer.id = "loading-container";
+        loadingContainer.className = "loading-container";
+        
+        const pokeballLoading = document.createElement("div");
+        pokeballLoading.className = "pokeball-loading";
+        
+        loadingContainer.appendChild(pokeballLoading);
+        document.querySelector(".container").appendChild(loadingContainer);
+    } else {
+        loadingContainer.classList.remove("hidden");
+    }
+}
+
+function hideLoadingAnimation() {
+    const loadingContainer = document.getElementById("loading-container");
+    if (loadingContainer) {
+        loadingContainer.classList.add("hidden");
+    }
+}
+
+// Modify the form submission event to show loading animation
+document.getElementById("pokemon-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const pokemonName = formData.get('pokemonName');
+    if (!pokemonName) return;
+    
+    // Show loading animation
+    showLoadingAnimation();
+    
+    fetch("/pokemon", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ pokemonName })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Prepare the Pokemon data but don't show it yet
+        prepareShowPokemon(data);
+        
+        // First hide the loading animation
+        hideLoadingAnimation();
+        
+        // Wait for the loading animation to fully disappear (1 second)
+        setTimeout(() => {
+            // Then show the Pokemon card
+            const container = document.getElementById("pokemon-container");
+            container.classList.remove("hidden");
+            container.classList.add("visible");
+        }, 1000); // 1 second delay before showing Pokemon
+    })
+    .catch(() => {
+        hideLoadingAnimation();
+        setTimeout(() => {
+            showPokemon({ error: "Failed to fetch Pokémon data" });
+        }, 1000);
+    });
+});
+
+// New function to prepare the Pokemon data without showing it yet
+function prepareShowPokemon(data) {
+    const container = document.getElementById("pokemon-container");
+    const img = document.getElementById("pokemonImage");
+    const name = document.getElementById("pokemonName");
+    const types = document.getElementById("pokemonTypes");
+    const height = document.getElementById("pokemonHeight");
+    const weight = document.getElementById("pokemonWeight");
+    const abilities = document.getElementById("pokemonAbilities");
+    const errorMsg = document.getElementById("errorMsg");
+
+    // Remove any previous type-* class
+    container.className = container.className
+        .split(' ')
+        .filter(c => !c.startsWith('type-'))
+        .join(' ');
+
+    if (data.error) {
+        img.src = "";
+        name.textContent = "";
+        types.textContent = "";
+        height.textContent = "";
+        weight.textContent = "";
+        abilities.textContent = "";
+        errorMsg.textContent = data.error;
+    } else {
+        img.src = data.image;
+        name.textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+        types.textContent = "Type: " + data.types.join(", ");
+        height.textContent = "Height: " + data.height / 10 + " m";
+        weight.textContent = "Weight: " + data.weight / 10 + " kg";
+        abilities.textContent = "Abilities: " + data.abilities.join(", ");
+        errorMsg.textContent = "";
+
+        // Add the type class for background and text color
+        if (data.types && data.types.length > 0) {
+            const primaryType = data.types[0].toLowerCase();
+            container.classList.add("type-" + primaryType);
+        }
+    }
+}
+
+// Modify the original showPokemon function to use the new approach
+function showPokemon(data) {
+    prepareShowPokemon(data);
+    
+    const container = document.getElementById("pokemon-container");
+    if (data.error) {
+        container.classList.remove("visible");
+        container.classList.add("hidden");
+    } else {
+        container.classList.remove("hidden");
+        container.classList.add("visible");
+    }
+}

@@ -35,7 +35,7 @@
                 <button type="submit">Search</button>
             </form>
             <div id="suggestions" class="suggestions-list"></div>
-            <div id="pokemon-carousel" class="pokemon-carousel">
+            <div style="margin-top: 6rem;"id="pokemon-carousel" class="pokemon-carousel">
                 <!-- Carousel items will be injected here by JS -->
             </div>
         </div>
@@ -51,6 +51,16 @@
         <p id="pokemonAbilities"></p>
         <p id="errorMsg" style="color:red;"></p>
     </div>
+    <div id="loading-container" class="loading-container hidden">
+        <div class="pokeball-loading"></div>
+    </div>
     <script src="./script.js"></script>
 </body> 
+<!-- HTML for the Footer -->
+
+</body>
+<footer class="copyright-footer">
+    <p><span class="pokeball-icon"></span> © Ishan Roy <script>document.write(new Date().getFullYear())</script> <span class="pokeball-icon"></span></p>
+</footer>
+```
 </html>
