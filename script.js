@@ -1,20 +1,44 @@
-document.getElementById('pokemon-form').addEventListener('submit', function(e) {
+document.getElementById("pokemon-form").addEventListener("submit", function (e) {
     e.preventDefault();
     const formData = new FormData(this);
-    const pokemonName = formData.get('pokemonName');
-    fetch('/pokemon', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pokemonName })
-    })
-    .then(response => response.json())
-    .then(data => {
-        showPokemon(data);
-    })
-    .catch(() => {
-        showPokemon({ error: "Failed to fetch Pokémon data" });
-    });
+    const pokemonName = formData.get("pokemonName").toLowerCase().trim();
+    if (!pokemonName) return;
+
+    showLoadingAnimation();
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        .then((response) => {
+            if (!response.ok) throw new Error("Pokémon not found");
+            return response.json();
+        })
+        .then((data) => {
+            const pokemonData = {
+                name: data.name,
+                image: data.sprites.other["official-artwork"].front_default || data.sprites.front_default,
+                types: data.types.map(t => t.type.name),
+                height: data.height,
+                weight: data.weight,
+                abilities: data.abilities.map(a => a.ability.name)
+            };
+
+            prepareShowPokemon(pokemonData);
+            hideLoadingAnimation();
+            setTimeout(() => {
+                const container = document.getElementById("pokemon-container");
+                container.classList.remove("hidden");
+                container.classList.add("visible");
+            }, 1000);
+        })
+        .catch(() => {
+            hideLoadingAnimation();
+            setTimeout(() => {
+                showPokemon({ error: "Failed to fetch Pokémon data" });
+            }, 1000);
+        });
+
+    stopCarousel();
 });
+
 
 function showPokemon(data) {
     const container = document.getElementById("pokemon-container");
