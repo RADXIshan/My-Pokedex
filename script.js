@@ -20,23 +20,15 @@ document.getElementById("pokemon-form").addEventListener("submit", function (e) 
                 weight: data.weight,
                 abilities: data.abilities.map(a => a.ability.name)
             };
-
-            prepareShowPokemon(pokemonData);
+            showPokemon(pokemonData);
             hideLoadingAnimation();
-            setTimeout(() => {
-                const container = document.getElementById("pokemon-container");
-                container.classList.remove("hidden");
-                container.classList.add("visible");
-            }, 1000);
+            document.getElementById("pokemon-container").classList.remove("hidden");
         })
-        .catch(() => {
+        .catch((err) => {
+            console.error("Error fetching Pokémon:", err);
             hideLoadingAnimation();
-            setTimeout(() => {
-                showPokemon({ error: "Failed to fetch Pokémon data" });
-            }, 1000);
+            showPokemon({ error: "Failed to fetch Pokémon data" });
         });
-
-    stopCarousel();
 });
 
 
