@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <audio id="backgroundMusic" autoplay muted loop preload="auto">
+        <source src="./pokemon.mp3" type="audio/mpeg">
+      </audio>
     <nav class="pokedex-navbar">
         <a href="index.html" class="active">
             <span class="nav-icon">🏠</span>
@@ -54,12 +57,47 @@
     <div id="loading-container" class="loading-container hidden">
         <div class="pokeball-loading"></div>
     </div>
-    <script src="./script.js"></script>
-</body> 
-<!-- HTML for the Footer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const music = document.getElementById('backgroundMusic');
 
-</body>
-<footer class="copyright-footer">
-    <p><span class="pokeball-icon"></span> © Ishan Roy <script>document.write(new Date().getFullYear())</script> <span class="pokeball-icon"></span></p>
-</footer>
+  // Try to load the saved music time
+  const savedTime = localStorage.getItem('music-time');
+  if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+  }
+
+  let musicStarted = false;
+
+  document.body.addEventListener('mouseover', () => {
+    if (!musicStarted) {
+      music.muted = false;
+      music.play().then(() => {
+        console.log('Music resumed!');
+        musicStarted = true;
+      }).catch((error) => {
+        console.error('Autoplay prevented or file missing:', error);
+      });
+    }
+  });
+
+  // Keep saving music time every second
+  setInterval(() => {
+    if (!music.paused) {
+      localStorage.setItem('music-time', music.currentTime);
+    }
+  }, 1000);
+
+  // Also save time just before leaving the page
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('music-time', music.currentTime);
+  });
+});
+
+      </script>
+    <script src="./script.js"></script>
+    <footer class="copyright-footer">
+        <p><span class="pokeball-icon"></span> © Ishan Roy <script>document.write(new Date().getFullYear())</script> <span class="pokeball-icon"></span></p>
+    </footer>
+</body> 
 </html>
