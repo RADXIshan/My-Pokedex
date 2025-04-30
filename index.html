@@ -69,7 +69,7 @@
 
   let musicStarted = false;
 
-  document.body.addEventListener('mousemove', () => {
+  document.body.addEventListener('mouseover', () => {
     if (!musicStarted) {
       music.muted = false;
       music.play().then(() => {
