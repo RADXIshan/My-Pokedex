@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./pokemon.css">
+</head>
+<body>
+    <audio id="backgroundMusic" autoplay muted loop preload="auto">
+        <source src="./pokemon.mp3" type="audio/mpeg">
+    </audio>
+    <nav class="pokedex-navbar">
+        <a href="index.html">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="pokedex.html" class="active">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Pokédex</span>
+        </a>
+        <a href="compare.html">
+            <span class="nav-icon">></span>
+            <span class="nav-label">Compare</span>
+        </a>
+        <a href="about.html">
+            <span class="nav-icon">ℹ️</span>
+            <span class="nav-label">About</span>
+        </a>
+    </nav>
+    
+    <div class="container" style="max-width: 1200px;">
+        <h1>Pokédex</h1>
+        
+        <div class="inner-container">
+            <p class="overview">Browse all Pokémon or search for your favorites!</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="pokedexSearch" placeholder="Search Pokémon by name or number" autocomplete="off">
+                <div id="searchSuggestions" class="suggestions-list"></div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filter-container">
+                <div class="filter-section">
+                    <div class="filter-title">Filter by Type</div>
+                    <div class="filter-options" id="typeFilters">
+                        <!-- Type filters will be added by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-title">Filter by Region</div>
+                    <div class="filter-options" id="regionFilters">
+                        <!-- Region filters will be added by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pokemon Grid -->
+            <div class="pokedex-grid" id="pokedexGrid">
+                <!-- Pokemon cards will be added by JavaScript -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button id="prevPage" class="pagination-btn">Previous</button>
+                <div class="page-info" id="pageInfo">Page 1</div>
+                <button id="nextPage" class="pagination-btn">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="loading-container" class="loading-container hidden">
+        <div class="pokeball-loading"></div>
+    </div>
+    
+    <footer class="copyright-footer">
+        <p><span class="pokeball-icon"></span> © Ishan Roy <script>document.write(new Date().getFullYear())</script> <span class="pokeball-icon"></span></p>
+    </footer>
+    
+    <script src="./pokedex.js"></script>
+</body>
+</html>

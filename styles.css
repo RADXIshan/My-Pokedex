@@ -7,12 +7,12 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
     margin: 0;
-    padding: 0.2rem 0 3rem 0;
+    padding: 0.2rem 0 60px 0; /* Adjust based on your footer height */
     position: relative;
     background: url("./images/background.jpg") no-repeat center center fixed;
     background-size: cover;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto; /* Changed from hidden to auto to enable scrolling */
 }
 
 body::before {
@@ -87,6 +87,34 @@ form {
     border: 2px solid #e3350d;
     margin-bottom: 0px;
 }
+/* Center the search container and improve its styling */
+.search-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+#pokedexSearch {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 3px solid #3b4cca;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Press Start 2P', 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+#pokedexSearch:focus {
+    border-color: #e3350d;
+    box-shadow: 0 0 12px rgba(227, 53, 13, 0.4);
+    outline: none;
+}
 
 input[type="text"] {
     font-family: 'Press Start 2P', 'Arial', sans-serif;
@@ -153,8 +181,8 @@ button[type="submit"]:hover {
     overflow-y: auto;
     width: 320px;
     z-index: 9999; 
-    margin-top: 2px;
-    box-shadow: 0 4px 16px #3b4cca33, 0 1.5px 8px #ffcb0533;
+    margin-top: 15px; /* Increased from 2px to create space below search bar */
+    box-shadow: 0 4px 16px rgba(59, 76, 202, 0.3), 0 1.5px 8px rgba(255, 203, 5, 0.3);
     font-family: 'Press Start 2P', 'Arial', sans-serif;
     font-size: 0.8rem;
     color: #222;
@@ -162,6 +190,7 @@ button[type="submit"]:hover {
     left: 50%;
     transform: translateX(-50%);
     padding: 0.5rem 0.5rem;
+    top: 100%; /* Position it at the bottom of the search container */
 }
 
 #pokemon-container.visible {
@@ -305,6 +334,24 @@ button[type="submit"]:hover {
     display: none !important;
 }
 
+/* Index page specific styling for suggestions list */
+.index-suggestions {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Target suggestions list specifically on index page */
+#suggestions.suggestions-list {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    z-index: 100;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .container, #pokemon-container {
@@ -317,6 +364,14 @@ button[type="submit"]:hover {
     }
     h1 {
         font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reset-button {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 100%;
     }
 }
 
@@ -590,6 +645,24 @@ button[type="submit"]:hover {
     display: none !important;
 }
 
+/* Index page specific styling for suggestions list */
+.index-suggestions {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Target suggestions list specifically on index page */
+#suggestions.suggestions-list {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    z-index: 100;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .container, #pokemon-container {
@@ -602,6 +675,14 @@ button[type="submit"]:hover {
     }
     h1 {
         font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reset-button {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 100%;
     }
 }
 
@@ -672,7 +753,7 @@ button[type="submit"]:hover {
 }
 /* Floating Left Navbar - Improved */
 .pokedex-navbar {
-    position: fixed;
+    position: absolute;
     top: 12.5rem;
     left: 0;
     height: 300px;
@@ -681,7 +762,7 @@ button[type="submit"]:hover {
     border-top-right-radius: 28px;
     border-bottom-right-radius: 28px;
     box-shadow: 4px 8px 32px 0 #3b4cca55, 0 2px 8px #ffcb0555;
-    z-index: 100;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -876,8 +957,8 @@ button[type="submit"]:hover {
     overflow-y: auto;
     width: 320px;
     z-index: 9999; 
-    margin-top: 2px;
-    box-shadow: 0 4px 16px #3b4cca33, 0 1.5px 8px #ffcb0533;
+    margin-top: 15px; /* Increased from 2px to create space below search bar */
+    box-shadow: 0 4px 16px rgba(59, 76, 202, 0.3), 0 1.5px 8px rgba(255, 203, 5, 0.3);
     font-family: 'Press Start 2P', 'Arial', sans-serif;
     font-size: 0.8rem;
     color: #222;
@@ -885,6 +966,7 @@ button[type="submit"]:hover {
     left: 50%;
     transform: translateX(-50%);
     padding: 0.5rem 0.5rem;
+    top: 100%; /* Position it at the bottom of the search container */
 }
 
 #pokemon-container.visible {
@@ -1028,6 +1110,24 @@ button[type="submit"]:hover {
     display: none !important;
 }
 
+/* Index page specific styling for suggestions list */
+.index-suggestions {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Target suggestions list specifically on index page */
+#suggestions.suggestions-list {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    z-index: 100;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .container, #pokemon-container {
@@ -1040,6 +1140,14 @@ button[type="submit"]:hover {
     }
     h1 {
         font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reset-button {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 100%;
     }
 }
 
@@ -1297,6 +1405,24 @@ button[type="submit"]:hover {
     display: none !important;
 }
 
+/* Index page specific styling for suggestions list */
+.index-suggestions {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Target suggestions list specifically on index page */
+#suggestions.suggestions-list {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    z-index: 100;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .container, #pokemon-container {
@@ -1309,6 +1435,14 @@ button[type="submit"]:hover {
     }
     h1 {
         font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reset-button {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 100%;
     }
 }
 
@@ -1382,7 +1516,7 @@ button[type="submit"]:hover {
     border-top-right-radius: 28px;
     border-bottom-right-radius: 28px;
     box-shadow: 4px 8px 32px 0 #3b4cca55, 0 2px 8px #ffcb0555;
-    z-index: 100;
+    z-index: 10000; /* Increased z-index to ensure it's on top */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1552,6 +1686,27 @@ button[type="submit"]:hover {
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
+/* Reset button styling */
+.reset-button {
+    background: linear-gradient(90deg, #e3350d 60%, #ffcb05 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Press Start 2P', 'Arial', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.reset-button:hover {
+    background: linear-gradient(90deg, #3b4cca 60%, #ffcb05 100%);
+    transform: scale(1.05);
+}
+
 #pokemon-container.visible:hover {
     transform: translateY(-15px) rotateY(5deg) rotateX(5deg);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
@@ -1609,18 +1764,19 @@ button[type="submit"]:hover {
 /* Copyright Footer */
 .copyright-footer {
     text-align: center;
-    padding: 1rem;
+    padding: 15px 0;
     font-size: 0.7rem;
     color: #fff;
     text-shadow: 1px 1px 0 #000;
-    background: linear-gradient(90deg, #3b4cca 0%, #e3350d 100%);
-    border-top: 2px solid #ffcb05;
+    background: rgb(46, 45, 45);
+    backdrop-filter: blur(5px);
+    border-top: 2px solid #3b4cca;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10000; /* Higher z-index to appear over everything */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .copyright-footer p {

@@ -1,0 +1,298 @@
+.pokedex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Increased from 150px to 200px */
+    gap: 25px; /* Increased from 20px */
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.pokemon-card {
+    background: rgba(255, 255, 255, 0.9); /* Made slightly more opaque */
+    border-radius: 15px; /* Increased from 10px */
+    padding: 20px; /* Increased from 15px */
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    border: 2px solid #3b4cca;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-8px); /* Increased from -5px */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border-color: #e3350d;
+}
+
+.pokemon-card img {
+    width: 130px; /* Increased from 100px */
+    height: 130px; /* Increased from 100px */
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.pokemon-number {
+    font-size: 0.9rem; /* Increased from 0.8rem */
+    color: #444; /* Darkened from #666 */
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.pokemon-name {
+    font-size: 1.2rem; /* Increased from 1rem */
+    margin-bottom: 10px;
+    color: #222; /* Darkened from #333 */
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.pokemon-type {
+    display: inline-block;
+    padding: 5px 10px; /* Increased from 3px 8px */
+    margin: 3px;
+    border-radius: 6px; /* Increased from 4px */
+    font-size: 0.8rem; /* Increased from 0.7rem */
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+/* Improve filter container */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #3b4cca;
+}
+
+.filter-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 15px;
+    min-width: 220px;
+    border: 2px solid #3b4cca;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    text-align: center;
+    color: #3b4cca;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.filter-option {
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+    color: #333;
+    font-weight: bold;
+}
+
+.filter-option:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-option.active {
+    background: #3b4cca;
+    color: white;
+    border-color: #3b4cca;
+    box-shadow: 0 2px 8px rgba(59, 76, 202, 0.4);
+}
+
+/* Make pagination more prominent */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0; /* Increased from 20px 0 */
+    gap: 15px; /* Increased from 10px */
+}
+
+.pagination-btn {
+    padding: 10px 20px; /* Increased from 8px 15px */
+    border-radius: 8px; /* Increased from 5px */
+    background: #3b4cca;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-family: 'Press Start 2P', 'Arial', sans-serif;
+    font-size: 0.8rem; /* Increased from 0.7rem */
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #e3350d;
+    transform: translateY(-2px);
+}
+
+.page-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem; /* Increased from 0.8rem */
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    padding: 0 10px;
+}
+
+/* Type colors */
+.type-normal { background-color: #A8A878; }
+.type-fire { background-color: #F08030; }
+.type-water { background-color: #6890F0; }
+.type-grass { background-color: #78C850; }
+.type-electric { background-color: #F8D030; }
+.type-ice { background-color: #98D8D8; }
+.type-fighting { background-color: #C03028; }
+.type-poison { background-color: #A040A0; }
+.type-ground { background-color: #E0C068; }
+.type-flying { background-color: #A890F0; }
+.type-psychic { background-color: #F85888; }
+.type-bug { background-color: #A8B820; }
+.type-rock { background-color: #B8A038; }
+.type-ghost { background-color: #705898; }
+.type-dragon { background-color: #7038F8; }
+.type-dark { background-color: #705848; }
+.type-steel { background-color: #B8B8D0; }
+.type-fairy { background-color: #EE99AC; }
+
+
+/* Popup styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+    overflow: hidden;
+    border: 3px solid #3b4cca;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    color: #e3350d;
+    cursor: pointer;
+    z-index: 10002;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+    transform: scale(1.1);
+    color: #ff0000;
+    background: white;
+}
+
+.popup-content {
+    padding: 25px;
+}
+
+.popup-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.popup-name {
+    font-size: 1.8rem;
+    color: #3b4cca;
+    margin: 5px 0;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.popup-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    background: radial-gradient(circle at 60% 40%, #ffcb05 60%, #fff 100%);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px auto;
+    border: 4px solid #3b4cca;
+}
+
+.popup-image-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.popup-types {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.popup-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    background: rgba(240, 240, 240, 0.8);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
