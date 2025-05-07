@@ -6,26 +6,60 @@
     <title>Pokédex</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./pokemon.css">
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(59, 76, 202, 0.3);
+            z-index: 10000;
+            border: 2px solid #3b4cca;
+            transition: transform 0.2s, background 0.2s;
+        }
+        
+        .audio-control:hover {
+            transform: scale(1.1);
+            background: rgba(255, 203, 5, 0.7);
+        }
+        
+        .audio-control i {
+            font-size: 20px;
+            color: #e3350d;
+        }
+    </style>
 </head>
 <body>
     <audio id="backgroundMusic" autoplay muted loop preload="auto">
         <source src="./pokemon.mp3" type="audio/mpeg">
     </audio>
+    <div class="audio-control" id="audioControl">
+        <i class="fas fa-volume-mute" id="audioIcon"></i>
+    </div>
     <nav class="pokedex-navbar">
         <a href="index.html">
-            <span class="nav-icon">🏠</span>
+            <span class="nav-icon"><i class="fas fa-home"></i></span>
             <span class="nav-label">Home</span>
         </a>
         <a href="pokedex.html" class="active">
-            <span class="nav-icon">📖</span>
+            <span class="nav-icon"><i class="fas fa-book"></i></span>
             <span class="nav-label">Pokédex</span>
         </a>
         <a href="compare.html">
-            <span class="nav-icon">></span>
+            <span class="nav-icon"><i class="fas fa-exchange-alt"></i></span>
             <span class="nav-label">Compare</span>
         </a>
         <a href="about.html">
-            <span class="nav-icon">ℹ️</span>
+            <span class="nav-icon"><i class="fas fa-info-circle"></i></span>
             <span class="nav-label">About</span>
         </a>
     </nav>
@@ -80,7 +114,7 @@
     <footer class="copyright-footer">
         <p><span class="pokeball-icon"></span> © Ishan Roy <script>document.write(new Date().getFullYear())</script> <span class="pokeball-icon"></span></p>
     </footer>
-    
+    <script src="./audio-control.js"></script>
     <script src="./pokedex.js"></script>
 </body>
 </html>
