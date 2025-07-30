@@ -19,7 +19,7 @@ Search, filter, and view Pokémon details with a fully responsive UI powered by 
 
 ## 📸 Screenshots
 
-| Home                            | Pokémon Details                       | Search Results                      |
+| Home                            | Pokémon Details / Pokedex                       | Compare Results                      |
 | ------------------------------- | ------------------------------------- | ----------------------------------- |
 | ![Home](./images/home.png) | ![Details](./images/pokedex.png) | ![Search](./images/compare.png) |
 
